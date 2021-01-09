@@ -10,12 +10,6 @@ static  int *y = new int();
 int main() {
 	srand(time(NULL));
 	Grid::populate();
-	/*
-	1  2  3  4
-	5  6  7  8
-	9  10 11 12
-	13 14 15 16
-		*/
 	Grid::grid[4][2] = 1;
 	Grid::grid[5][3] = 1;
 	Grid::grid[4][1] = 1;
@@ -34,14 +28,15 @@ int main() {
 		
 		Cells::bring_back_marked_cells();
 		Cells::kill_marked_cells();
-		this_thread::sleep_for(chrono::milliseconds(2000));
+		this_thread::sleep_for(chrono::milliseconds(1000));
 
 		Grid::gotoxy(0, 0);
 		Grid::clear_grid();
 	}
-
-	//Grid::randomise();
-
+	delete x;
+	delete y;
+	x = NULL;
+	y = NULL;
 
 	return 1;
 }
