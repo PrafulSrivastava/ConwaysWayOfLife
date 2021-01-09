@@ -7,13 +7,37 @@ using namespace std;
 
 static  int *x = new int();
 static  int *y = new int();
+
+void ShowConsoleCursor(bool showFlag)
+{
+	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	CONSOLE_CURSOR_INFO     cursorInfo;
+
+	GetConsoleCursorInfo(out, &cursorInfo);
+	cursorInfo.bVisible = showFlag; // set the cursor visibility
+	SetConsoleCursorInfo(out, &cursorInfo);
+}
+
+void triangle_dot() {
+	Grid::grid[8][2] = 1;
+	Grid::grid[9][3] = 1;
+	Grid::grid[8][1] = 1;
+	Grid::grid[7][2] = 1;
+}
+void diagonal_mover() {
+	Grid::grid[0][1] = 1;
+	Grid::grid[1][2] = 1;
+	Grid::grid[2][2] = 1;
+	Grid::grid[2][1] = 1;
+	Grid::grid[2][0] = 1;
+}
+
 int main() {
+	ShowConsoleCursor(false);
 	srand(time(NULL));
 	Grid::populate();
-	Grid::grid[4][2] = 1;
-	Grid::grid[5][3] = 1;
-	Grid::grid[4][1] = 1;
-	Grid::grid[3][2] = 1;
+	diagonal_mover();
 	while (true) {
 		Grid::gotoxy(0, 0);
 		Grid::display_grid();
@@ -28,7 +52,7 @@ int main() {
 		
 		Cells::bring_back_marked_cells();
 		Cells::kill_marked_cells();
-		this_thread::sleep_for(chrono::milliseconds(1000));
+		this_thread::sleep_for(chrono::milliseconds(200));
 
 		Grid::gotoxy(0, 0);
 		Grid::clear_grid();

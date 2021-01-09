@@ -3,8 +3,8 @@
 #include <vector>
 #include <windows.h>
 
-#define HEIGHT 10
-#define WIDTH 10
+#define HEIGHT 15
+#define WIDTH 15
 
 using namespace std;
 
