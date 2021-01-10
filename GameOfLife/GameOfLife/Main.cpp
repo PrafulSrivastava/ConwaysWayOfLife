@@ -3,21 +3,13 @@
 #include "Cells.h"
 #include <time.h>
 #include <thread>
+#include "Utility.h"
 using namespace std;
 
 static  int *x = new int();
 static  int *y = new int();
 
-void ShowConsoleCursor(bool showFlag)
-{
-	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
 
-	CONSOLE_CURSOR_INFO     cursorInfo;
-
-	GetConsoleCursorInfo(out, &cursorInfo);
-	cursorInfo.bVisible = showFlag; // set the cursor visibility
-	SetConsoleCursorInfo(out, &cursorInfo);
-}
 
 void triangle_dot() {
 	Grid::grid[8][2] = 1;
@@ -34,12 +26,12 @@ void diagonal_mover() {
 }
 
 int main() {
-	ShowConsoleCursor(false);
+	Utility::ShowConsoleCursor(false);
 	srand(time(NULL));
 	Grid::populate();
 	diagonal_mover();
 	while (true) {
-		Grid::gotoxy(0, 0);
+		Utility::gotoxy(0, 0);
 		Grid::display_grid();
 		for (int i = 0; i < HEIGHT; i++) {
 			for (int j = 0; j < WIDTH; j++) {
@@ -54,7 +46,7 @@ int main() {
 		Cells::kill_marked_cells();
 		this_thread::sleep_for(chrono::milliseconds(200));
 
-		Grid::gotoxy(0, 0);
+		Utility::gotoxy(0, 0);
 		Grid::clear_grid();
 	}
 	delete x;

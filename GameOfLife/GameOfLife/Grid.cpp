@@ -2,16 +2,6 @@
 
 vector<vector<int>> Grid::grid = { };
 
-void Grid::gotoxy(int x, int y) {
-	static HANDLE handle = NULL;
-	if (!handle) {
-		handle = GetStdHandle(STD_OUTPUT_HANDLE);
-	}
-	COORD point = { x ,y };
-	SetConsoleCursorPosition(handle, point);
-
-}
-
 void Grid::display_grid() {
 
 	for (int i = 0; i < HEIGHT; i++) {

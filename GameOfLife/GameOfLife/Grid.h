@@ -11,7 +11,6 @@ using namespace std;
 class Grid {
 	
 public:
-	static void gotoxy(int x, int y);
 	static vector<vector<int>> grid;
 	static void populate();
 	static void display_grid();
