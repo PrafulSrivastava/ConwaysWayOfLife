@@ -7,9 +7,9 @@ void Grid::display_grid() {
 	for (int i = 0; i < HEIGHT; i++) {
 		for (int j = 0; j < WIDTH; j++) {
 			if (!grid[i][j])
-				cout << "." << " ";
+				cout << DEAD_ORGANISM << " ";
 			else
-				cout << "*" << " ";
+				cout << ALIVE_ORGANISM << " ";
 		}
 		cout << endl;
 	}
@@ -38,7 +38,7 @@ void Grid::randomise() {
 void Grid::clear_grid() {
 	for (int i = 0; i < HEIGHT; i++) {
 		for (int j = 0; j < WIDTH; j++) {
-			cout << "." << " ";
+			cout << DEAD_ORGANISM << " ";
 		}
 		cout << endl;
 	}

@@ -10,9 +10,15 @@ using namespace std;
 #define CELL_STATE_MARK_DEAD -2
 
 class Cells {
-
+private:
+	static bool are_killed;
+	static bool are_born;
+	static int killed;
+	static int born;
 public:
-
+	static void reset_bools();
+	static bool has_changed();
+	static int count_alive_cells();
 	static int count_of_neighbors(const int &row, const int &col);
 	static void mark_for_bringing_back_to_life(const int& row, const int& col);
 	static void kill_cell(const int& row, const int& col);

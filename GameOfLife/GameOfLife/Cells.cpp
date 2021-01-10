@@ -2,6 +2,25 @@
 
 using namespace std;
 
+bool Cells::are_killed = false;
+bool Cells::are_born = false;
+
+void Cells::reset_bools() {
+	are_killed = false;
+	are_born = false;
+}
+
+int Cells::count_alive_cells() {
+	int alive_cnt = 0;
+	for (int i = 0; i < HEIGHT; i++) {
+		for (int j = 0; j < WIDTH; j++) {
+			if (Grid::grid[i][j] == CELL_STATE_ALIVE)
+				alive_cnt++;
+		}
+	}
+	return alive_cnt;
+}
+
 int Cells::count_of_neighbors(const int &row, const int &col) {
 	int neighbours = 0;
 	for (int i = row - 1; (i < (row + 2) && i < HEIGHT); i++) {
@@ -22,10 +41,12 @@ int Cells::count_of_neighbors(const int &row, const int &col) {
 
 void Cells::mark_for_bringing_back_to_life(const int &row, const int &col) {
 	Grid::grid[row][col] = CELL_STATE_MARK_ALIVE;
+	are_born = true;
 }
 
 void Cells::kill_cell(const int &row, const int &col) {
 	Grid::grid[row][col] = CELL_STATE_MARK_DEAD;
+	are_killed = true;
 }
 
 void Cells::life_decisions(unsigned int row, unsigned int col) {
@@ -74,4 +95,8 @@ void Cells::kill_marked_cells() {
 				Grid::grid[i][j] = CELL_STATE_DEAD;
 		}
 	}
+}
+
+bool Cells::has_changed() {
+	return (are_killed || are_born);
 }

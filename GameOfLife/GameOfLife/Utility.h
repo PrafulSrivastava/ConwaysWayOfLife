@@ -9,4 +9,5 @@ class Utility {
 public:
 	static void gotoxy(int x, int y);
 	static void ShowConsoleCursor(bool showFlag);
+	static string get_color();
 };
