@@ -17,11 +17,13 @@ int main() {
 	srand(time(NULL));
 	Grid::populate();
 	//diagonal_mover();
-	Organisms::diagonal_mover_left_top();
+	/*Organisms::diagonal_mover_left_top();
 	Organisms::diagonal_mover_right_top();
 	Organisms::diagonal_mover_left_bottom();
-	Organisms::diagonal_mover_right_bottom();
-
+	Organisms::diagonal_mover_right_bottom();*/
+	//Organisms::something_new();
+	//Organisms::blossom();
+	Organisms::jesus();
 	//triangle_dot();
 	int turn = 0;
 	while (true) {
@@ -41,7 +43,8 @@ int main() {
 		if (!Cells::has_changed()) {
 			Organisms::call_diagonal_mover_randomly();
 		}
-		//this_thread::sleep_for(chrono::milliseconds(1));
+		//getchar();
+		//this_thread::sleep_for(chrono::milliseconds(1000));
 		turn++;
 	}
 	delete x;

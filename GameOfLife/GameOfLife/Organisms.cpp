@@ -89,3 +89,48 @@ void Organisms::call_diagonal_mover_randomly() {
 		break;
 	}
 }
+
+void Organisms::something_new() {
+	Grid::grid[19][20] = 1;
+	Grid::grid[20][20] = 1;
+	Grid::grid[20][21] = 1;
+	Grid::grid[20][22] = 1;
+	Grid::grid[21][20] = 1;
+	Grid::grid[21][22] = 1;
+	Grid::grid[22][22] = 1;
+}
+
+void Organisms::swoop() {
+	Grid::grid[16][36] = 1;
+	Grid::grid[16][37] = 1;
+	Grid::grid[17][34] = 1;
+	Grid::grid[17][39] = 1;
+	Grid::grid[18][33] = 1;
+	Grid::grid[19][33] = 1;
+	Grid::grid[19][39] = 1;
+	Grid::grid[20][33] = 1;
+	Grid::grid[20][34] = 1;
+	Grid::grid[20][35] = 1;
+	Grid::grid[20][36] = 1;
+	Grid::grid[20][37] = 1;
+	Grid::grid[20][38] = 1;
+}
+void Organisms::blossom() {
+	Grid::grid[18][24] = 1;
+	Grid::grid[18][25] = 1;
+	Grid::grid[18][26] = 1;
+	Grid::grid[19][23] = 1;
+	Grid::grid[19][27] = 1;
+	Grid::grid[20][23] = 1;
+	Grid::grid[20][24] = 1;
+	Grid::grid[20][26] = 1;
+	Grid::grid[20][27] = 1;
+}
+void Organisms::jesus() {
+	Grid::grid[HEIGHT / 2][(WIDTH / 2) - 1] = 1;
+	Grid::grid[(HEIGHT / 2)][(WIDTH / 2)] = 1;
+	Grid::grid[(HEIGHT / 2)][(WIDTH / 2) + 1] = 1;
+	Grid::grid[(HEIGHT / 2) + 2][(WIDTH / 2)] = 1;
+	Grid::grid[(HEIGHT / 2) + 3][(WIDTH / 2)] = 1;
+	Grid::grid[(HEIGHT / 2) + 4][WIDTH / 2] = 1;
+}
